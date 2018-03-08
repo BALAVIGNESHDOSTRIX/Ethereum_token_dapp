@@ -8,38 +8,25 @@
      <script type="javascript" src="web3.js"></script>
 	 
 </head>
-<body>
+<body background="bgimage.jpg">
 	<center>
-		<h1> MINTING THE TOKEN</h1>
+		<h1 style="color:chartreuse"> MINTING THE TOKEN</h1>
 		<form>
 			<table border="1">
-				<tr><td>ENTER THE MINT TOKEN AMOUNT:</td><td><input type="number" id="mint"></td></tr>
-				<tr><td>CLICK TO MINT</td><td><input type="button" value="CLICK" onclick="Mint()"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE MINT TOKEN AMOUNT:</td><td><input type="number" id="mint"></td></tr>
+				<tr><td style="color:#F4FF81">CLICK TO MINT</td><td><input type="button" value="CLICK" onclick="Mint()"></td></tr>
 
 			</table>
 		</form>
 	
 	</center>
 	<center>
-			<h1> TRANSFER THE TOKEN</h1>
+			<h1 style="color:chartreuse"> TRANSFER THE TOKEN</h1>
 		<form>
 			<table border="1">
-				<tr><td>ENTER THE ADDRESS TO SEND:</td><td><input type="text" id="to"></td></tr>
-				<tr><td>ENTER THE  TOKEN AMOUNT:</td><td><input type="number" id="token"></td></tr>
-				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranfer()"></td></tr>
-
-			</table>
-		</form>
-	
-	</center>
-	<center>
-		<form>
-			<h1> TRANSFER TO THIRD PARTY </h1>
-			<table border="1">
-				<tr><td>ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
-				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="too"></td></tr>
-				<tr><td>ENTER THE TOKEN AMOUNT:</td><td><input type="number" id="tokenB"></td></tr>
-				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE ADDRESS TO SEND:</td><td><input type="text" id="to"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE  TOKEN AMOUNT:</td><td><input type="number" id="token"></td></tr>
+				<tr><td style="color:#F4FF81">CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranfer()"></td></tr>
 
 			</table>
 		</form>
@@ -47,11 +34,24 @@
 	</center>
 	<center>
 		<form>
-			<h1> BALANCE CHECK </h1>
+			<h1 style="color:chartreuse"> TRANSFER TO THIRD PARTY </h1>
 			<table border="1">
-				<tr><td>ENTER THE ADDRESS TO CHECK:</td><td><input type="text" id="check"></td></tr>
-				<tr><td>ENTER THE TOKEN AMOUNT:</td><td><input type="number" id="tokenT"></td></tr>
-				<tr><td>CLICK TO CHECK </td><td><input type="button" value="CLICK"  onclick="Check()"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE TO ADDRESS:</td><td><input type="text" id="too"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE TOKEN AMOUNT:</td><td><input type="number" id="tokenB"></td></tr>
+				<tr><td style="color:#F4FF81">CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
+
+			</table>
+		</form>
+	
+	</center>
+	<center>
+		<form>
+			<h1 style="color:chartreuse"> BALANCE CHECK </h1>
+			<table border="1">
+				<tr><td style="color:#F4FF81">ENTER THE ADDRESS TO CHECK:</td><td><input type="text" id="check"></td></tr>
+				<tr><td style="color:#F4FF81">ENTER THE TOKEN AMOUNT:</td><td><input type="number" id="tokenT"></td></tr>
+				<tr><td style="color:#F4FF81">CLICK TO CHECK </td><td><input type="button" value="CLICK"  onclick="Check()"></td></tr>
 
 			</table>
 		</form>
@@ -443,6 +443,7 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	var e = document.getElementById('check').value;
 	var token = document.getElementById('token').value;
 	var tokenB = document.getElementById('tokenB').value;
+	 
 	function Mint()
 	{
 		sybex.mint(a,function(error,result){
@@ -501,11 +502,11 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 
 	function Check()
 	{
-		sybex.balanceof(e,function(error,result){
+		sybex.balanceOf(e,function(error,result){
             if (!error) {
-             
+             document.getElementById('tokenT').value = result;
               
-        alert(result);
+        //alert(result);
        
                              
             } else {
