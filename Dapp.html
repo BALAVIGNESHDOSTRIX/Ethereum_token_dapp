@@ -36,7 +36,7 @@
 			<h1> TRANSFER TO THIRD PARTY </h1>
 			<table border="1">
 				<tr><td>ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
-				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="to"></td></tr>
+				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="too"></td></tr>
 				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
 
 			</table>
@@ -424,6 +424,8 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 
 	var a= document.getElementById('mint');
 	var b= document.getElementById('to');
+	var c= document.getElementById('from');
+	var d = document.getElementById('too');
 	function Mint()
 	{
 		sybex.mint(a,function(error,result){
@@ -464,7 +466,7 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	
 	function tranferFrom()
 	{
-		sybex.TranferFromB(b,function(error,result){
+		sybex.TranferFromB(from,to,function(error,result){
             if (!error) {
              
               
