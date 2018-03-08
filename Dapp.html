@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8" />
+		
+		<title>MY TEST</title>
+		
+     <script type="javascript" src="web3.js"></script>
+	 
+</head>
+<body>
+	<center>
+		<form>
+			<table border="1">
+				<tr><td>ENTER THE MINT TOKEN AMOUNT:</td><td><input type="number" id="mint"></td></tr>
+				<tr><td>CLICK TO MINT</td><td><input type="button" value="CLICK" onclick="Mint()"></td></tr>
+
+			</table>
+		</form>
+	
+	</center>
+	<center>
+		<form>
+			<table border="1">
+				<tr><td>ENTER THE ADDRESS TO SEND:</td><td><input type="text" id="to"></td></tr>
+				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK" id="send" onclick="tranfer()"></td></tr>
+
+			</table>
+		</form>
+	
+	</center>
+	<center>
+		<form>
+			<table border="1">
+				<tr><td>ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
+				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="to"></td></tr>
+				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
+
+			</table>
+		</form>
+	
+	</center>
+</body>
+	
+<script>
+	web3.eth.defaultAccount = web3.eth.accounts[0];
+var sybexcon = web3.eth.contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferFromB",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "TransferB",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "allowed",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "decreaseApproval",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalsupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mint",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_to",
+				"type": "address"
+			},
+			{
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "increaseApproval",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_owner",
+				"type": "address"
+			},
+			{
+				"name": "_to",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	}
+]);
+var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
+    if (!web3.isConnected()) {
+        console.log("Ok");
+    } else {
+        console.log("no");
+    }
+    web3.version.getNetwork((err, netId) => {
+        switch (netId) {
+            case "1":
+                console.log('This is mainnet')
+                break
+            case "2":
+                console.log('This is the deprecated Morden test network.')
+                break
+            case "3":
+                console.log('This is the ropsten test network.')
+                break
+            case "4":
+                console.log('This is the Rinkeby test network.')
+                break
+            case "42":
+                console.log('This is the Kovan test network.')
+                break
+            default:
+                console.log('This is an unknown network.')
+        }
+    })
+
+	var a= document.getElementById('mint');
+	var b= document.getElementById('to');
+	function Mint()
+	{
+		sybex.mint(a,function(error,result){
+            if (!error) {
+             
+              
+        alert(result);
+       
+                             
+            } else {
+     
+             
+        alert(result);
+        
+            }
+        });
+	}
+
+
+	function tranfer()
+	{
+		
+		sybex.TransferB(b,function(error,result){
+            if (!error) {
+             
+              
+        alert(result);
+       
+                             
+            } else {
+     
+             
+        alert(result);
+        
+            }
+        });
+	}
+	
+	function tranferFrom()
+	{
+		sybex.TranferFromB(b,function(error,result){
+            if (!error) {
+             
+              
+        alert(result);
+       
+                             
+            } else {
+     
+             
+        alert(result);
+        
+            }
+        });
+	}
+</script>
+</html>
