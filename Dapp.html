@@ -25,6 +25,7 @@
 		<form>
 			<table border="1">
 				<tr><td>ENTER THE ADDRESS TO SEND:</td><td><input type="text" id="to"></td></tr>
+				<tr><td>ENTER THE MINT TOKEN AMOUNT:</td><td><input type="number" id="token"></td></tr>
 				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranfer()"></td></tr>
 
 			</table>
@@ -37,6 +38,7 @@
 			<table border="1">
 				<tr><td>ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
 				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="too"></td></tr>
+				<tr><td>ENTER THE MINT TOKEN AMOUNT:</td><td><input type="number" id="tokenB"></td></tr>
 				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
 
 			</table>
@@ -438,6 +440,8 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	var c= document.getElementById('from');
 	var d = document.getElementById('too');
 	var e = document.getElementById('check');
+	var token = document.getElementById('token');
+	var tokenB = document.getElementById('tokenB');
 	function Mint()
 	{
 		sybex.mint(a,function(error,result){
@@ -460,7 +464,7 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	function tranfer()
 	{
 		
-		sybex.TransferB(b,function(error,result){
+		sybex.TransferB(b,token,function(error,result){
             if (!error) {
              
               
@@ -478,7 +482,7 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	
 	function tranferFrom()
 	{
-		sybex.TranferFromB(c,td,function(error,result){
+		sybex.TranferFromB(c,d,tokenB,function(error,result){
             if (!error) {
              
               
