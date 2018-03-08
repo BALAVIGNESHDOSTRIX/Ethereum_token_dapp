@@ -25,7 +25,7 @@
 		<form>
 			<table border="1">
 				<tr><td>ENTER THE ADDRESS TO SEND:</td><td><input type="text" id="to"></td></tr>
-				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK" id="send" onclick="tranfer()"></td></tr>
+				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranfer()"></td></tr>
 
 			</table>
 		</form>
@@ -38,6 +38,17 @@
 				<tr><td>ENTER THE FROM ADDRESS:</td><td><input type="text" id="from"></td></tr>
 				<tr><td>ENTER THE TO ADDRESS:</td><td><input type="text" id="too"></td></tr>
 				<tr><td>CLICK TO SEND </td><td><input type="button" value="CLICK"  onclick="tranferFrom()"></td></tr>
+
+			</table>
+		</form>
+	
+	</center>
+	<center>
+		<form>
+			<h1> BALANCE CHECK </h1>
+			<table border="1">
+				<tr><td>ENTER THE ADDRESS TO CHECK:</td><td><input type="text" id="check"></td></tr>
+				<tr><td>CLICK TO CHECK </td><td><input type="button" value="CLICK"  onclick="Check()"></td></tr>
 
 			</table>
 		</form>
@@ -426,6 +437,7 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	var b= document.getElementById('to');
 	var c= document.getElementById('from');
 	var d = document.getElementById('too');
+	var e = document.getElementById('check');
 	function Mint()
 	{
 		sybex.mint(a,function(error,result){
@@ -466,7 +478,25 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
 	
 	function tranferFrom()
 	{
-		sybex.TranferFromB(from,too,function(error,result){
+		sybex.TranferFromB(c,td,function(error,result){
+            if (!error) {
+             
+              
+        alert(result);
+       
+                             
+            } else {
+     
+             
+        alert(result);
+        
+            }
+        });
+	}
+
+	function Check()
+	{
+		sybex.balanceof(e,function(error,result){
             if (!error) {
              
               
