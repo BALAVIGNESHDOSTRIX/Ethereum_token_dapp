@@ -436,13 +436,13 @@ var sybex = sybexcon.at('0x953b7efec0d829f106bc00b52b8894c3abd9cf33');
         }
     })
 
-	var a= document.getElementById('mint');
-	var b= document.getElementById('to');
-	var c= document.getElementById('from');
-	var d = document.getElementById('too');
-	var e = document.getElementById('check');
-	var token = document.getElementById('token');
-	var tokenB = document.getElementById('tokenB');
+	var a= document.getElementById('mint').vale;
+	var b= document.getElementById('to').value;
+	var c= document.getElementById('from').value;
+	var d = document.getElementById('too').value;
+	var e = document.getElementById('check').value;
+	var token = document.getElementById('token').value;
+	var tokenB = document.getElementById('tokenB').value;
 	function Mint()
 	{
 		sybex.mint(a,function(error,result){
