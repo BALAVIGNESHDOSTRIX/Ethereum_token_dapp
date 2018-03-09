@@ -436,17 +436,17 @@ var sybex = sybexcon.at('0xe4501cf75eea551ea6aafdbc692fb2d3fae7d6da');
         }
     })
 
-	var a= document.getElementById('mint').value;
-	var b= document.getElementById('to').value;
-	var c= document.getElementById('from').value;
-	var d = document.getElementById('too').value;
-	var e = document.getElementById('check').value;
+	
+	var mint= document.getElementById('mint').value;
+	var to= document.getElementById('to').value;
+	var from= document.getElementById('from').value;
+	var too = document.getElementById('too').value;
+	var check = document.getElementById('check').value;
 	var token = document.getElementById('token').value;
 	var tokenB = document.getElementById('tokenB').value;
-	 
 	function Mint()
 	{
-		sybex.mint(a,function(error,result){
+		sybex.mint(mint,function(error,result){
             if (!error) {
              
               
@@ -463,10 +463,10 @@ var sybex = sybexcon.at('0xe4501cf75eea551ea6aafdbc692fb2d3fae7d6da');
 	}
 
 
-	function tranfer()
+	function Gettranfer()
 	{
 		
-		sybex.TransferB(b,token,function(error,result){
+		sybex.transfer(to,token,function(error,result){
             if (!error) {
              
               
@@ -484,7 +484,7 @@ var sybex = sybexcon.at('0xe4501cf75eea551ea6aafdbc692fb2d3fae7d6da');
 	
 	function tranferFrom()
 	{
-		sybex.TranferFromB(c,d,tokenB,function(error,result){
+		sybex.TransferFromB(from,too,tokenB,function(error,result){
             if (!error) {
              
               
@@ -502,7 +502,7 @@ var sybex = sybexcon.at('0xe4501cf75eea551ea6aafdbc692fb2d3fae7d6da');
 
 	function Check()
 	{
-		sybex.balanceOf(e,function(error,result){
+		sybex.CheckBalance(check,function(error,result){
             if (!error) {
              document.getElementById('tokenT').value = result;
               
