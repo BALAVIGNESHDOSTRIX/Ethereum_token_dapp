@@ -1,14 +1,26 @@
 pragma solidity ^0.4.0;
-import "./DostrixTokenERC.sol";
-contract DostrixtokenB is DostrixToken
+
+contract DostrixtokenB 
     {
      
         
-        
-        
+         uint256 public constant totalsupply = 1000;
+         
+         string public name;
+         string public symbol;
+         uint256 public decimals;
+         
+         address public Owner;
+         
+         function DostrixtokenB() public{
+           name = "DostrixToken";
+            symbol = "DTX";
+            decimals = 0;
+            Owner = msg.sender;
+         }
        
         
-       
+       mapping(address => uint256) public Balance;
         
         modifier OwnerOnly()
         {
@@ -22,31 +34,39 @@ contract DostrixtokenB is DostrixToken
        
         
         
-        function mint(uint256 _amount) public OwnerOnly  returns(bool)
+        function mint(uint256 _amount) public OwnerOnly  
         {
-           if(_amount < totalsupply){
             
-            balanceOf[Owner] = balanceOf[Owner] + _amount;
-            
-            return true;
-           }
-           else
-           {
-               return false;
-           }
-            
+          require(_amount < totalsupply);
+          
+              Balance[Owner] = Balance[Owner] + _amount;
+              
+         
+           
         }
         
         
-        function TransferB(address _to,uint256 _amount) public OwnerOnly returns(bool)
+        function transfer(address _to,uint256 _amount) public OwnerOnly 
         {
-            transfer(_to,_amount);
+           require(Balance[Owner] >= _amount);
+           
+               Balance[_to] = Balance[_to] + _amount;
+               Balance[Owner] = Balance[Owner] - _amount;
+               
+           
         }
         
-        function TransferFromB(address _from,address _to,uint256 _amount) public returns(bool)
+        function TransferFromB(address _from,address _to,uint256 _amount) public 
         {
-            transferFrom(_from,_to,_amount);
+           require(Balance[_from] >= _amount);
+           
+               Balance[_from] = Balance[_from] - _amount;
+               Balance[_to] = Balance[_to] + _amount;
+               
         }
         
-       
+       function CheckBalance(address _check) public view returns(uint256)
+       {
+           return Balance[_check];
+       }
     }
